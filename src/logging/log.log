@@ -1,0 +1,8 @@
+2017-09-04 20:54:09 PM - DEBUG - log_test: debug
+2017-09-04 20:54:09 PM - INFO - log_test: info
+2017-09-04 20:54:09 PM - WARNING - log_test: warning
+2017-09-04 20:54:09 PM - ERROR - log_test: error
+2017-09-04 20:56:44 PM - DEBUG - log_test: debug
+2017-09-04 20:56:44 PM - INFO - log_test: info
+2017-09-04 20:56:44 PM - WARNING - log_test: warning
+2017-09-04 20:56:44 PM - ERROR - log_test: error
