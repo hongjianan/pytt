@@ -1,4 +1,5 @@
 # coding: UTF-8
+import time
 
 def my_xrange(*args):
     start = 0
@@ -29,6 +30,25 @@ def run():
     print(gen.send(None))
 
 
-if __name__ == "__main__":
-    run()
+def range_time():
+    # time.sleep(3)
+    begin = time.time()
+    a = 0
+    for i in range(1000 * 1000):
+        a += i
+    delta = time.time() - begin
+    print('range using time:', delta)
+    # time.sleep(3)
+    #==================================
+    begin = time.time()
+    a = 0
+    for i in xrange(1000 * 1000):
+        a += i
+    delta = time.time() - begin
+    print('xrange using time:', delta)
+    # time.sleep(3)
 
+
+if __name__ == "__main__":
+    # run()
+    range_time()

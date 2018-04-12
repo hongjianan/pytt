@@ -3,7 +3,7 @@
 from collections import Iterable
 
 
-class NumIter():
+class NumIter:
     def __init__(self, start, end, distance = 1):
         self.start = start
         self.end = end

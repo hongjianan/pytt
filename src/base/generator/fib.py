@@ -1,23 +1,18 @@
 # coding: UTF-8
 
 
-def fib(times):
-    now = 1
-    next = 1
-    while times > 0:
-        times -= 1
+def fib():
+    now, after = 0, 1
+    while True:
         yield now
-        tmp = next
-        next += now
-        now = tmp
+        now, after = after, now + after
 
-
-def xrange(start, end, distance = 1)
 
 def filb_tt():
-    for i in fib(10):
-        print(i)
-    range(10)
+    f = fib()
+    li = [f.next() for i in range(10)]
+    print(li)
+
 
 def run():
     filb_tt()
