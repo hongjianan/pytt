@@ -16,6 +16,7 @@ def sleepy():
     time.sleep(1)
     print("exit")
 
+# 不使用语法糖
 print("before func name=%s" % sleepy.__name__)
 sleepy = WrapperTimer(sleepy)
 print("after func name=%s" % sleepy.__name__)
@@ -23,7 +24,6 @@ print("after func name=%s" % sleepy.__name__)
 
 # 使用@语法糖
 @WrapperTimer
-# xxx
 def sleeps():
     print("sleep time=0.5")
     time.sleep(0.5)

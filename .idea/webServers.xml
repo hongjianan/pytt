@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="c5bfbff8-25fe-49a6-8b76-2df3c1177090" name="pytt" url="http://47.52.93.197">
+        <fileTransfer host="47.52.93.197" port="22" rootFolder="/home/jason/codespace/pyspace/" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
