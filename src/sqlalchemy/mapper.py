@@ -12,27 +12,30 @@ from sqlalchemy.orm import (
 from db_mgr import DBMgr
 from orm_object import DBUser
 
-def mapper_tt():
-	mgr = DBMgr()
-	mgr.define_tables_user()
-	mgr.create_table()
-	
-	mapper(DBUser, mgr.user_table)
 
-def create():
+def create_table():
+	mgr = DBMgr()
+	mgr.define_table_user()
+	mgr.create_table()
+
+def create_record():
+	mgr = DBMgr()
+	mgr.define_table_user()
+	mapper(DBUser, mgr.user_table)
+	
 	user = DBUser()
 	user.user_name = 'jason'
 	user.password = 'password'
 	user.email = 'hjnhong@163.com'
 	
-	mgr.session.add(user)
-	mgr.session.flush()
-	mgr.session.commit()
+# 	mgr.session.add(user)
+# 	mgr.session.flush()
+# 	mgr.session.commit()
 	
 
 def query():
-	
+	pass
 	
 if __name__ == '__main__':
-	mapper_tt()
+	create_table()
 	

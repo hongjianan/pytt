@@ -1,24 +1,28 @@
-# encoding: utf-8
-'''
-Created on 2018年4月10日
+# coding: UTF-8
 
-@author: Hong
-'''
 
 class Person:
-	desc = 'person'
-	def __init__(self, name, age):
-		self.name = name
-		self.age = age
-	
+    desc = 'Person'
+    
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-def obj_member_tt():
-	p = Person('jason', 18)
-	print('obj', p.__dict__)
-	
-	print('class', Person.__dict__)
-	
-	
+
+def object_member_tt():
+    p = Person('hong', 18)
+    pd = p.__dict__
+    print(pd)
+
+def class_member_tt():
+    p = Person('jason', 18)
+    [name for name in dir(p) if not name.startswith('__')]
+    print('Person class member', name)
+    pd = dict((name, getattr(p, name)) for name in dir(p) if not name.startswith('__'))
+    print(pd)   
+    
+
 if __name__ == '__main__':
-	obj_member_tt()
-	
+    object_member_tt()
+    class_member_tt()
+    

@@ -88,9 +88,14 @@ class Animal(object):
         """获取field"""
         return self.__age
 
+    # 使用__builtin__的 wrapper property之后，会生成另外一个 wrapper age.setter
     @age.setter
     def age(self, age):
         """设置field"""
+        if not isinstance(age, int):
+            raise ValueError('param age: must be int')
+        if 0 > age or age > 150:
+            raise ValueError('param age: must be in [0, 150]')
         self.__age = age
 
     def get_weight(self):
@@ -107,6 +112,7 @@ class Animal(object):
 
     def eat(self):
         self.weight += 1
+
 
 class Dog(Animal):
     def __init__(self):

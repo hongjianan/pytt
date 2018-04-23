@@ -1,6 +1,22 @@
 # coding: UTF-8
 
 
+def print_step():
+    print('===1===')
+    yield 1
+    print('===2===')
+    yield 2
+
+def yield_tt():
+    step = print_step()
+    for i in step:
+        print('gen', i)
+    
+    step = print_step()
+    step.next()
+    step.next()
+    step.next()
+
 def gen_num(start, end, distance):
     print("start gen_num")
     while start < end:
@@ -21,7 +37,7 @@ def run():
 
     print("===================")
 
-    num = (x * x for x in range(0, 10, 2))
+    num = (x*x for x in range(0, 10, 2))
     for i in num:
         print(i)
 
@@ -39,5 +55,6 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    yield_tt()
+#     run()
 

@@ -1,17 +1,19 @@
 # coding: UTF-8
 
 
-def fib():
-    now, after = 0, 1
-    while True:
+def fib(times):
+    now = 1
+    next = 1
+    while times > 0:
+        times -= 1
         yield now
-        now, after = after, now + after
+        now, next = next, now + next
 
 
 def filb_tt():
-    f = fib()
-    li = [f.next() for i in range(10)]
-    print(li)
+    for i in fib(10):
+        print(i)
+    range(10)
 
 
 def run():

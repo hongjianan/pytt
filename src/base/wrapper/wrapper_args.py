@@ -5,24 +5,32 @@ USER_AGE = 27
 
 
 def WrapperPrinter1(func):
+    print('==init WrapperPrinter1==')
     def wrapper1(*args, **kwargs):
         print("===== 1 =====running %s ..." % func.__name__)
         ret = func(*args, **kwargs)
         return ret
-    # wrapper.__name__ = func.__name__
+#     wrapper1.__name__ = func.__name__
     return wrapper1
 
 
 def WrapperPrinter2(func):
+    print('==init WrapperPrinter2==')
     def wrapper2(*args, **kwargs):
         print("===== 2 =====running %s ..." % func.__name__)
         ret = func(*args, **kwargs)
         return ret
-    # wrapper.__name__ = func.__name__
+    wrapper2.__name__ = func.__name__
     return wrapper2
 
 
-# 装饰器越上层越底层
+print('======order1=========')
+'''
+装饰器越上层越底层
+equal to:
+    get_user = WrapperPrinter1(get_user)
+    get_user = WrapperPrinter2(get_user)
+'''
 @WrapperPrinter2
 @WrapperPrinter1
 def get_user():
@@ -36,20 +44,24 @@ def set_user(name, age = 27):
     USER_AGE = age
     print("set user, name=%s age=%d" % (name, age))
 
+print('======order2=========')
 set_user = WrapperPrinter2(set_user)
 set_user = WrapperPrinter1(set_user)
 
 
-def run():
+def call_order_tt():
     get_user()
     print(get_user.__name__)
 
+
+def call2_order_tt():
     set_user("hongjianan")
     get_user()
 
-    set_user("lixiang", 20)
-    get_user()
+#     set_user("lixiang", 20)
+#     get_user()
 
 
 if __name__ == "__main__":
-    run()
+#     call_order_tt()
+    call2_order_tt()

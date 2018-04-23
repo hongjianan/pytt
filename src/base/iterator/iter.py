@@ -3,7 +3,7 @@
 from collections import Iterable
 
 
-class NumIter:
+class NumIter():
     def __init__(self, start, end, distance = 1):
         self.start = start
         self.end = end
@@ -42,9 +42,10 @@ def run():
 
     l = [1, 2, 3]
     i = iter(l)
+    print(dir(i))
     while True:
         try:
-            print(next(i))
+            print(next(i, 666))
             print(i.next())
         except StopIteration as e:
             print("StopIteration", e)

@@ -1,12 +1,15 @@
 import eventlet as evl
 
 
-def handler(conn, addreess):
+def handler(conn, address):
     while True:
-        data = conn.recv(1)
+        data = conn.recv(1024)
+        
         if not data:
             print("connection is broken addr", address, conn)
             break
+        else:
+            print("recv data:", data)
         conn.sendall(data)
 
 

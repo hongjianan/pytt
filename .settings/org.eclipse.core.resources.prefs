@@ -13,7 +13,5 @@ encoding//src/sqlalchemy/db_mgr.py=utf-8
 encoding//src/sqlalchemy/mapper.py=utf-8
 encoding//src/sqlalchemy/noorm.py=utf-8
 encoding//src/sqlalchemy/orm_object.py=utf-8
-encoding//src/sqlalchemy/user/provider.py=utf-8
-encoding//src/sqlalchemy/user/sql.py=utf-8
 encoding//src/wsgi/application.py=utf-8
 encoding//src/wsgi/server.py=utf-8
