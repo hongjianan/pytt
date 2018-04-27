@@ -39,12 +39,7 @@ def dync_args():
     show_dict(**d)
 
 
-def run():
-    func_attr()
-    dync_args()
-
-
 if __name__ == "__main__":
-    run()
+	func_attr()
+	dync_args()
     
-
