@@ -5,7 +5,10 @@ Created on 2018年4月28日
 @author: Hong
 '''
 
-from enum import Enum, unique
+from enum import (
+	Enum,
+# 	unique
+)
 
 # @unique # if wrapper unique, red_alis != 1
 class Color(Enum):
