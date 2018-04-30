@@ -1,4 +1,4 @@
-# coding: UTF-8
+# -*- coding: utf-8 -*-
 
 # 动态参数 tuple *args   dict **kwargs
 def show_tuple(*args):

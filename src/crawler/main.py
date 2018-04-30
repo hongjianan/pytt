@@ -1,4 +1,4 @@
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
 try: #python2
     from urlparse import urljoin

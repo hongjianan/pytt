@@ -1,4 +1,4 @@
-# coding: UTF-8
+# -*- coding: utf-8 -*-
 
 USER_NAME = "jason"
 USER_AGE = 27

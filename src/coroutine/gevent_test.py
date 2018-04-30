@@ -1,4 +1,4 @@
-# coding: UTF-8
+# -*- coding: utf-8 -*-
 
 from gevent import monkey
 monkey.patch_all()   # 修改阻塞io

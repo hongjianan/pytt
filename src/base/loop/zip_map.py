@@ -1,4 +1,4 @@
-# coding: UTF-8
+# -*- coding: utf-8 -*-
 
 def zip_tt():
     L1 = [1, 2, 3, 4]
