@@ -1,0 +1,5 @@
+setup.py
+JApp.egg-info/PKG-INFO
+JApp.egg-info/SOURCES.txt
+JApp.egg-info/dependency_links.txt
+JApp.egg-info/top_level.txt
