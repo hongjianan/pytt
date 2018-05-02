@@ -31,7 +31,7 @@ class CDPlayer(object):
         
         fsm.default_start_state = 'closed'
         
-        fsm.add_transition(start, end, event, replace)
+#         fsm.add_transition(start, end, event, replace)
 
 def player_tt():
     pass

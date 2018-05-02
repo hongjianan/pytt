@@ -7,7 +7,7 @@ Created on 2018年4月28日
 
 from enum import (
 	Enum,
-# 	unique
+	unique
 )
 
 # @unique # if wrapper unique, red_alis != 1
@@ -21,7 +21,7 @@ class Color(Enum):
 def enum_tt():
 	print(type(Color.red))
 	
-	print(Color.red)
+	print('Color.red', Color.red)
 	print(Color(1))
 	print(Color['red'])
 	print(Color.red.name)
@@ -42,6 +42,7 @@ def enum_tt():
 
 def use_tt():
 	light = Color.red
+	print(light, light.name, light.value)
 	print('light is red', light == Color.red)
 	
 if __name__ == '__main__':
