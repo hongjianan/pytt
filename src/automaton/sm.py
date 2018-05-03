@@ -91,12 +91,12 @@ def enum_state_tt():
     ss.open()
 #     ss.open() # 不能重复open()
     print(ss)
-     
+
     ss.close()
     print(ss)
     
     
 if __name__ == '__main__':
-    def_status_tt()
-#     enum_state_tt()
+#     def_status_tt()
+    enum_state_tt()
     
