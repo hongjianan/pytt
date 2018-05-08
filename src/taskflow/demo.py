@@ -5,9 +5,8 @@ Created on 2018年5月4日
 @author: Administrator
 '''
 
-import taskflow.engines
 from taskflow.patterns import linear_flow as lt
-from taskflow import task
+from taskflow import task, engines
 from taskflow.types import failure as task_failed
 
 
@@ -94,7 +93,7 @@ def get_flow(flow, numbers):
                  CallJoe(),
                  CallJmilkFan())
 
-    return taskflow.engines.load(flow_api,
+    return engines.load(flow_api,
                                  engine_conf={'engine': 'serial'},
                                  store=numbers)
 
