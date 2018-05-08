@@ -6,3 +6,16 @@
 2017-09-04 20:56:44 PM - INFO - log_test: info
 2017-09-04 20:56:44 PM - WARNING - log_test: warning
 2017-09-04 20:56:44 PM - ERROR - log_test: error
+2018-05-08 16:49:49 PM - DEBUG - log_test: debug
+2018-05-08 16:49:49 PM - INFO - log_test: info
+2018-05-08 16:49:49 PM - WARNING - log_test: warning
+2018-05-08 16:49:49 PM - ERROR - log_test: error
+2018-05-08 16:49:49 PM - INFO - log_test: into try
+2018-05-08 16:49:49 PM - WARNING - log_test: out try
+2018-05-08 16:50:59 PM - DEBUG - log_test: debug
+2018-05-08 16:50:59 PM - INFO - log_test: info
+2018-05-08 16:50:59 PM - WARNING - log_test: warning
+2018-05-08 16:50:59 PM - ERROR - log_test: error
+2018-05-08 16:50:59 PM - DEBUG - log_test: ==============
+2018-05-08 16:50:59 PM - INFO - log_test: into try
+2018-05-08 16:50:59 PM - WARNING - log_test: out try

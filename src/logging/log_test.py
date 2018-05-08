@@ -24,6 +24,14 @@ def log_tt():
     logging.info("info")
     logging.warning("warning")
     logging.error("error")
+    
+    logging.debug("==============")
+    
+    try:
+        logging.info('into try')
+        raise Exception('try error')
+    except Exception as er:
+        logging.warn('out try')
 
 
 def multi_log_tt():
@@ -41,12 +49,8 @@ def multi_log_tt():
     logger.addHandler(debug_log)
 
     logger.error("error_log error")
-
-
-def run():
-    # log_tt()
-    multi_log_tt()
-
+    
 
 if __name__ == "__main__":
-    run()
+    log_tt()
+#     multi_log_tt()

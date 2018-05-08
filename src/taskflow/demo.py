@@ -109,9 +109,8 @@ def demo():
         flow_engine.run()
     except Exception:
         print "TaskFlow Failed!"
-        raise
-
-    new_numbers = flow_engine.storage.fetch('new_numbers')
+    else:
+        new_numbers = flow_engine.storage.fetch('new_numbers')
 
 
 if __name__ == '__main__':
