@@ -6,8 +6,8 @@ Created on 2018年4月11日
 '''
 
 def dict_tt():
-	d = {'1': 'one', '2': 'two'}
-	print(d.items())
-	
+    d = {'1': 'one', '2': 'two'}
+    print(d.items())
+
 if __name__ == '__main__':
-	dict_tt()
+    dict_tt()
