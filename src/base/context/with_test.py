@@ -1,6 +1,26 @@
 # -*- coding: utf-8 -*-
 
 import contextlib
+import uuid
+
+
+class Log(object):
+    def __init__(self, lid=None):
+        self.lid = lid
+    
+    def __enter__(self):
+        print('__enter__')
+        if not self.lid:
+            self.lid = str(uuid.uuid4())
+        return []
+        
+    def __exit__(self, type, value, trace):
+        print(type, value, trace)
+        print('__exit__')
+        self.lid = None
+        
+    def get_id(self):
+        return self.lid
 
 
 @contextlib.contextmanager
@@ -20,10 +40,24 @@ def with_tt():
         li.append(2)
     print(li)
 
-
-def run():
-    with_tt()
+def enter_tt():
+#     with Log() as l:
+#         print(type(l))
+#         print(l.get_id())
+    
+    print('======')
+    l = Log()
+    l.__enter__()
+    print(l.get_id())
+    l.__exit__(None, None, None)
+    
+    print('======')
+    l = Log()
+    
+    with l:
+        print(l.get_id())
 
 
 if __name__ == "__main__":
-    run()
+#     with_tt()
+    enter_tt()

@@ -1,5 +1,21 @@
 # -*- coding: utf-8 -*-
 
+def add(a, b):
+    print('add(%s, %s)' % (a, b))
+    return a + b
+
+class Action:
+    def dispatch(self, action, groupid, *args, **kwargs):
+        try:
+            func = getattr(self, action)
+        except AttributeError:
+            print('eeeee')
+            raise
+        return func(*args, **kwargs)
+        
+    def test(self, name, age):
+        print('======test=====', name, age)
+        
 
 def reflect_tt():
     time = __import__("time")
@@ -20,14 +36,20 @@ def reflect_tt():
 def import_tt():
     com = __import__("lib.test.com", fromlist = True)
     print(dir(com))
+    
 
-
-def run():
-    import_tt()
-    # reflect_tt()
-
+def call_func():
+    fun = getattr(__name__, 'add')
+    fun(1, 2)
+    
+def class_call():
+    obj = Action()
+    obj.dispatch('test1', 11, name='jason', age=23)
 
 if __name__ == "__main__":
-    run()
+    # import_tt()
+    # reflect_tt()
+    # call_func()
+    class_call()
     
 

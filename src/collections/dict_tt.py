@@ -42,7 +42,7 @@ def defaultdict_tt():
 
 def ordereddict_tt():
     # ordered dict
-    od = OrderedDict().
+    od = OrderedDict()
     od[1] = 'one'
     od[3] = 'three'
     od[2] = 'two'
@@ -56,7 +56,14 @@ def ordereddict_tt():
     d[2] = 'two'
     print(d)
     
+    
+def ordereddict_init_tt():
+    od = OrderedDict({1: 'one', 3: 'three', 2: 'two'})
+    print(od)
+    print(od[1])
+    
 if __name__ == '__main__':
 #     defaultdict_tt()
-    ordereddict_tt()
+#     ordereddict_tt()
+    ordereddict_init_tt()
     

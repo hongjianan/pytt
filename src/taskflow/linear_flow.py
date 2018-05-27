@@ -14,7 +14,11 @@ from taskflow.patterns import linear_flow
 from taskflow.types import failure
 
 class TaskA(task.Task):
+	def __init__(self, id):
+		self.id = id
+		
 	def execute(self, sleeptime, times, *args, **kwargs):
+		print(self.id)
 		print('T[%s] execute. sleeptime:%d times:%d args:%s kwargs:%s' %
 			(self.__class__.__name__, sleeptime, times, args, kwargs))
 		for i in range(times):
@@ -50,9 +54,10 @@ class TaskC(task.Task):
 
 def get_task_flow(sleeptime, times):
 	flow = linear_flow.Flow('t1')
-	flow.add(TaskA(),
+	flow.add(TaskA(1),
 			 TaskB(),
-			 TaskC())
+			 TaskC(),
+			 TaskA(2))
 	
 	store = {
 		'sleeptime': sleeptime,

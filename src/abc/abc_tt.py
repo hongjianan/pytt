@@ -14,21 +14,34 @@ class Person(object):
 	@abc.abstractmethod
 	def say(self):
 		''' '''
+	
+	@abc.abstractmethod
+	def name(self):
+		''' '''	
+	
 
 class Chinese(Person):
+	def __init__(self, name):
+		self._name = name
+	
 	def say(self):
 		print('say Chinese')
 		
 	def eat(self):
 		print('Chinese eat')
+	
+	@property
+	def name(self):
+		return self._name
 		
 
 def abstract_tt():
 # 	p = Person()
-	c = Chinese()
+	c = Chinese('jason')
 	print(type(c))
 	c.say()
 	c.eat()
+	print(c.name())
 
 if __name__ == '__main__':
 	abstract_tt()

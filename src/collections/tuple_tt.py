@@ -14,10 +14,26 @@ def tuple_tt():
     print(name, age, gender)
     
     # 如果tuple中保存的是list等对象，只要不修改list的索引，就能修改其中list的数据
-    nums = ([1, 3, 5], [2, 4, 6])
+    nums = ([1, 3, 5],
+            [2, 4, 6])
     print(nums)
     nums[0].append(7)
     print('tuple after change', nums)
+    
+    print('=========')
+    
+    xy = ((0, 1),
+          (2, 3))
+    print(xy[0][0])
+    print(xy[0][1])
+
+    if False:
+        xyz = [[[],],]
+        xyz[True][False][True] = (1, 0, 1)
+        xyz[False][False][True] = (0, 0, 1)
+        
+        print(xyz[True][False][True])
+    
 
 
 def namedtuple_tt():
@@ -29,7 +45,7 @@ def namedtuple_tt():
     print(b)
     print(d)
     print(a.x, a.y, a.z)
-    
+    print(getattr(a, 'x'))
     # asdict
     dd = d._asdict()
     print(type(dd), dd)
