@@ -7,7 +7,18 @@ Created on 2018年4月29日
 
 import abc
 
+class BaseNoMeta(object):
+	#__metaclass__ = abc.ABCMeta	# 如果不加这个show不被重新定义也没有问题
+	
+	@abc.abstractmethod
+	def show(self):
+		''' '''
 
+class DevicNoMeta(BaseNoMeta):
+	def show2(self):
+		print('DevicNoMeta show()')
+		
+		
 class Person(object):
 	__metaclass__ = abc.ABCMeta
 	
@@ -43,6 +54,13 @@ def abstract_tt():
 	c.eat()
 	print(c.name())
 
+
+def nometa_tt():
+	nometa = DevicNoMeta()
+	nometa.show2()
+	
+	
 if __name__ == '__main__':
-	abstract_tt()
+# 	abstract_tt()
+	nometa_tt()
 	

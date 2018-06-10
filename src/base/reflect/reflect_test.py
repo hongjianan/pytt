@@ -45,11 +45,21 @@ def call_func():
 def class_call():
     obj = Action()
     obj.dispatch('test1', 11, name='jason', age=23)
+    
 
+def class_attr():
+    obj = Action()
+    setattr(obj, 'add', add)
+    for attr in dir(obj):
+        print(attr, getattr(obj, attr))
+    
+    print(obj.add(1, 2))
+        
 if __name__ == "__main__":
     # import_tt()
     # reflect_tt()
     # call_func()
-    class_call()
+#     class_call()
+    class_attr()
     
 

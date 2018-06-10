@@ -10,6 +10,25 @@ from enum import (
 	unique
 )
 
+
+class TaskState(Enum):
+	WAITING = 0
+	DOING = 1
+	CANCELING = 2
+	CANCELED = 3
+	FAIL = 4
+	FINISH = 5
+
+
+ULOG_STATE = {
+    'DOING': TaskState.DOING,
+    'WAITING': TaskState.WAITING,
+    'CANCELING': TaskState.CANCELING,
+    'CANCELED': TaskState.CANCELED,
+    'FINISH': TaskState.FINISH,
+}
+
+
 # @unique # if wrapper unique, red_alis != 1
 class Color(Enum):
 	red = 1
@@ -39,6 +58,9 @@ def enum_tt():
 	for k, v in Color.__members__.items():
 		print(k)
 		print(v)
+		
+	for k, v in ULOG_STATE.items():
+		print(k, v.value)
 
 def use_tt():
 	light = Color.red
@@ -46,6 +68,6 @@ def use_tt():
 	print('light is red', light == Color.red)
 	
 if __name__ == '__main__':
-# 	enum_tt()
-	use_tt()
+	enum_tt()
+# 	use_tt()
 	
