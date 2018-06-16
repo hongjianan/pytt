@@ -7,12 +7,17 @@ class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
+    
+    def get_desc(self):
+        return self.desc
 
 
 def object_member_tt():
     p = Person('hong', 18)
     pd = p.__dict__
     print(pd)
+    print(p.get_desc())
+
 
 def class_member_tt():
     p = Person('jason', 18)
@@ -24,5 +29,5 @@ def class_member_tt():
 
 if __name__ == '__main__':
     object_member_tt()
-    class_member_tt()
+#     class_member_tt()
     

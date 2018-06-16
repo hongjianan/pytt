@@ -45,7 +45,10 @@ def namedtuple_tt():
     print(b)
     print(d)
     print(a.x, a.y, a.z)
-    print(getattr(a, 'x'))
+    print("getattr(a, 'x')", getattr(a, 'x'))
+    print("hasattr(a, 'x')", hasattr(a, 'x'))
+    print("hasattr(a, 'xy')", hasattr(a, 'xy'))
+    print("hasattr(Point, 'x)", hasattr(Point, 'x'))
     # asdict
     dd = d._asdict()
     print(type(dd), dd)

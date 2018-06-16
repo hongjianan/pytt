@@ -112,6 +112,11 @@ def demo():
         new_numbers = flow_engine.storage.fetch('new_numbers')
 
 
+def man_run():
+    task = CallJim()
+    task.execute('1234')
+
 if __name__ == '__main__':
-    demo()
+#     demo()
+    man_run()
 

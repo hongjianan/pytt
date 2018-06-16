@@ -9,6 +9,10 @@ from unittest import TestCase
 from mock import Mock, create_autospec, patch
 
 
+class Empty(object):
+    pass
+
+
 class Person:
     def __init__(self):
         self.__age = 10
@@ -43,7 +47,21 @@ class PersonTest(TestCase):
         self.assertEqual(p.get_age(), 10)
         self.assertEqual(p.get_age(), 11)
         self.assertEqual(p.get_age(), 12)
+    
+    @patch('mock_tt.Person.get_class_name')
+    def test_class_fun(self, mock_get_class_name):
+        mock_get_class_name.return_value = 'MockPerson'
         
+        self.assertEqual(Person().get_age(), 10)
+        self.assertEqual(Person.get_class_name(), 'MockPerson')
+    
+    def test_nothing(self):
+        Empty = Mock(return_value={'enable': True})
+        e = Empty()
+        e.common = Mock(return_value={'enable': True})
+        
+        self.assertEqual(e.common['enable'], True)
+    
     def test_get_fullname_1(self):
         p = Person()
         print()
