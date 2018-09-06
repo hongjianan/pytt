@@ -25,9 +25,30 @@ class C(A, B):
 #         A.__init__(self)
 
 
+class BaseA(object):
+    def __init__(self):
+        print('%s' % self.__class__.__name__)
+
+
+class BaseB(object):
+    def __init__(self, name):
+        print('%s - %s' % (self.__class__.__name__, name))
+
+
+class ChildC(BaseA, BaseB):
+    def __init__(self):
+        BaseA.__init__(self)
+        BaseB.__init__(self, 'b')
+
+
 def init_tt():
     C()
-    
-    
+
+
+def multi_init_tt():
+    ChildC()
+
+
 if __name__ == '__main__':
-    init_tt()
+#     init_tt()
+    multi_init_tt()

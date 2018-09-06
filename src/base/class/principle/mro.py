@@ -8,7 +8,7 @@ Created on 2018年5月24日
 class Base(object):
     def __init__(self):
         print 'Base create'
-        
+
 class childA(Base):
     def __init__(self):
         print 'enter A '

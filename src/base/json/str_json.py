@@ -44,7 +44,7 @@ def from_str_to_json():
     j = json.loads(s)
     print(type(j))
     print(j) 
-    
+
 if __name__ == '__main__':
     from_json_to_str()
     from_str_to_json()

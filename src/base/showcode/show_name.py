@@ -11,7 +11,7 @@ def get_function_name():
     return inspect.stack()[1][3]
 
 class A(object):
-    def show(self):
+    def __init__(self):
         print('''
                  [CLASS:%s]
                  [FUNC:%s]
@@ -24,9 +24,14 @@ class A(object):
                __file__,
                sys._getframe().f_lineno))
 
+
+class B(A):
+    pass
+
+
 def show_code_info():
-    a = A()
-    a.show()
+#     A()
+    B()
     
 if __name__ == '__main__':
     show_code_info()
