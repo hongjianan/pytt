@@ -8,10 +8,10 @@ Created on 2018年4月23日
 import __builtin__
 
 class Tmp(object):
-	def _tmp(self):
-		print('this is _tmp')
-	tmp = property(_tmp)
-	
+    def _tmp(self):
+        print('this is _tmp')
+    tmp = property(_tmp)
+    
 if __name__ == '__main__':
-	t = Tmp()
-	t.tmp
+    t = Tmp()
+    t.tmp

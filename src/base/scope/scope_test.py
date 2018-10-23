@@ -32,7 +32,7 @@ def lambda_tt():
     for i in range(10):
         l.append(fun_ret(i))
     print(l[0])
-	
+    
 if __name__ == "__main__":
 #     func1()
 #     func2()

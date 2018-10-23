@@ -40,6 +40,6 @@ def dync_args():
 
 
 if __name__ == "__main__":
-	func_attr()
-	dync_args()
+    func_attr()
+    dync_args()
     

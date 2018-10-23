@@ -8,9 +8,9 @@ Created on 2018年4月21日
 import funcA, funcB
 
 def funcAB():
-	funcA.funcA()
-	funcB.funcB()
+    funcA.funcA()
+    funcB.funcB()
 
 if __name__ == '__main__':
-	funcAB()
-	
+    funcAB()
+    

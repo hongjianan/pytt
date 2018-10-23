@@ -11,37 +11,37 @@ from wsgiref.util import application_uri
 
 
 def run_with_cgi(application):
-	environ = deepcopy(os.environ)
-	environ['wsgi.input'] = sys.stdin
-	environ['wsgi.error'] = sys.stderr
-	environ['wsgi.version']      = (1, 0)
-	environ['wsgi.multithread']  = False
-	environ['wsgi.multiprocess'] = True
-	environ['wsgi.run_once']     = True	        
-	environ['wsgi.url_scheme'] = 'http'
+    environ = deepcopy(os.environ)
+    environ['wsgi.input'] = sys.stdin
+    environ['wsgi.error'] = sys.stderr
+    environ['wsgi.version']      = (1, 0)
+    environ['wsgi.multithread']  = False
+    environ['wsgi.multiprocess'] = True
+    environ['wsgi.run_once']     = True            
+    environ['wsgi.url_scheme'] = 'http'
     
-	headers_set = []
-	headers_send = []
+    headers_set = []
+    headers_send = []
     
-	def write(data):
-		sys.stdout.write(data)
-		sys.stdout.flush()
+    def write(data):
+        sys.stdout.write(data)
+        sys.stdout.flush()
 
-	def start_response(status, response_headers, exc_info=None):
-		headers_set[:] = [status, response_headers]
-		return write
-	
-	result = application(environ, start_response)
-	
-	try:
-		for data in result:
-			if data:
-				write(data)
-	finally:
-		if hasattr(result, 'close'):
-			result.close()
+    def start_response(status, response_headers, exc_info=None):
+        headers_set[:] = [status, response_headers]
+        return write
+    
+    result = application(environ, start_response)
+    
+    try:
+        for data in result:
+            if data:
+                write(data)
+    finally:
+        if hasattr(result, 'close'):
+            result.close()
 
 
 if __name__ == '__main__':
-	run_with_cgi(1)
-	
+    run_with_cgi(1)
+    

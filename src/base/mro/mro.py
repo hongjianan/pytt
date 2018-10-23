@@ -19,12 +19,12 @@ class A(B, C):
     pass
 
 class E(object):
-	pass
+    pass
 
 
 if __name__ == '__main__':
-	print inspect.getmro(D)
-	print inspect.getmro(B)
-	print inspect.getmro(C)
-	print inspect.getmro(A)
-	print(E.__mro__)
+    print inspect.getmro(D)
+    print inspect.getmro(B)
+    print inspect.getmro(C)
+    print inspect.getmro(A)
+    print(E.__mro__)

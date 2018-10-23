@@ -15,10 +15,12 @@ stream    Use the specified stream to initialize the StreamHandler. Note
 """
 
 def log_tt():
-    logging.basicConfig(filename = "log.log",
-                        format = "%(asctime)s - %(levelname)s - %(module)s: %(message)s",
-                        datefmt = "%Y-%m-%d %H:%M:%S %p",
-                        level = logging.DEBUG)
+    logging.basicConfig(
+#         filename="log.log",
+        format="%(asctime)s - %(levelname)s - [%(filename)s:%(lineno)d %(module)s]: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        level=logging.DEBUG,
+    )
 
     logging.debug("debug")
     logging.info("info")

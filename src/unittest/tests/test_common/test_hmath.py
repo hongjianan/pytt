@@ -16,20 +16,20 @@ from common import hmath
 
 class TestHmath(unittest.TestCase):
 
-		
-	def test_add(self):
-		self.assertEqual(3, hmath.add(1, 2))
-		self.assertNotEqual(0, hmath.add(0, 1))
-		
-	def test_div(self):
-		"""Test Hmath div(a, b)"""
-		self.assertEqual(2.5, hmath.div(5, 2))
-		pass
-	
-	def test_last(self):
-		print('======test_last========')
+        
+    def test_add(self):
+        self.assertEqual(3, hmath.add(1, 2))
+        self.assertNotEqual(0, hmath.add(0, 1))
+        
+    def test_div(self):
+        """Test Hmath div(a, b)"""
+        self.assertEqual(2.5, hmath.div(5, 2))
+        pass
+    
+    def test_last(self):
+        print('======test_last========')
 
 
 if __name__ == "__main__":
-	#import sys;sys.argv = ['', 'TestHmath.test_dir']
-	unittest.main(verbosity=2)
+    #import sys;sys.argv = ['', 'TestHmath.test_dir']
+    unittest.main(verbosity=2)

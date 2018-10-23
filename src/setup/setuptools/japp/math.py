@@ -6,18 +6,18 @@ Created on 2018年5月1日
 '''
 
 class Math(object):
-	'''
-	japp: Math 数学类
-	'''
-	@staticmethod
-	def add(a, b):
-		return a + b
+    '''
+    japp: Math 数学类
+    '''
+    @staticmethod
+    def add(a, b):
+        return a + b
 
-	@staticmethod
-	def sub(a, b):
-		return a - b
-	
-	
-	
+    @staticmethod
+    def sub(a, b):
+        return a - b
+    
+    
+    
 if __name__ == '__main__':
-	pass
+    pass

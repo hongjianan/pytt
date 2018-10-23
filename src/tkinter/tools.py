@@ -4,21 +4,37 @@ Created on 2018年10月19日
 
 @author: Administrator
 '''
-from enum import Enum
+import json
 import Tkinter as tk
 import ttk
-from IPython.utils.tests.test_wildcard import root
 
 
-class Method(Enum):
-    ToJson = 'json格式化'
-    Relation = '备份关系'
+class Method(object):
+    ToJson = u'json格式化'
+    Null = u'无'
+
+    def __init__(self):
+        self.method = {
+            self.ToJson: self.to_json,
+            self.Null: self.null
+        }
     
     @classmethod
     def values(cls):
-        return (cls.ToJson.value, cls.Relation.value)
+        return (cls.ToJson, cls.Null)
     
+    @staticmethod
+    def to_json(input):
+        print('to_json', input)
+        obj = json.loads(input)
+        return json.dumps(obj, sort_keys=True, indent=4,
+                          separators=(',', ': '))
 
+    @staticmethod
+    def null(input):
+        return input
+    
+    
 class Root(object):
     def __init__(self, title=None, weight=900, height=700):
         self.tk = None
@@ -64,14 +80,19 @@ class Click(object):
     
     def cb(self):
         data = self.content.get_input()
-        self.content.set_output(data)
+        print(self.tools.get_method())
+        method = Method().method[self.tools.get_method()]
+        output = method(data)
+        self.content.set_output(output)
         
     def draw(self):
         button = tk.Button(self.root, text="执行", command=self.cb)
-        button.grid(row=0, column=2)
+        button.grid(row=0, column=1)
 
 
 class Content(object):
+
+    BEING = '1.0'
     
     def __init__(self, root):
         self.root = root
@@ -79,24 +100,26 @@ class Content(object):
         self.output = None
     
     def draw(self):
-        self.input = tk.Text(self.root)
-        self.output = tk.Text(self.root)
+        self.input = tk.Text(self.root, font=('consolas', 19))
+        self.output = tk.Text(self.root, font=('consolas', 19))
 
         self.input.grid(row=1, column=0)
         self.output.grid(row=2, column=0)
     
     def get_input(self):
-        return self.input.get(tk.INSERT, tk.END)
+        return self.input.get(self.BEING, tk.END)
     
     def set_output(self, data):
-        return self.output.insert(tk.END, data)
+        self.output.delete(self.BEING, tk.END)
+        return self.output.insert(self.BEING, data)
     
     def copy_output(self):
         return 
 
     def clear_input(self):
-        return self.
-        
+        return self.input.delete(self.BEING, tk.END)
+
+
 def main():
     root = Root('工具集')
     root.init()

@@ -6,10 +6,10 @@ Created on 2018年4月26日
 '''
 
 def add(a, b):
-	return (a + b)
+    return (a + b)
 
 def div(a, b):
-	return (a / b)
+    return (a / b)
 
 if __name__ == '__main__':
-	pass
+    pass

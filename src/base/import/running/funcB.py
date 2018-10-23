@@ -8,8 +8,8 @@ Created on 2018年4月21日
 import count
 
 def funcB():
-	count.counter += 1
-	print('funcB counter=%d' % count.counter)
+    count.counter += 1
+    print('funcB counter=%d' % count.counter)
 
 if __name__ == '__main__':
-	pass
+    pass

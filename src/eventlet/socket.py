@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 import eventlet
-from eventlet.green import socket
+# from eventlet.green import socket
 
 
 def geturl(url):
