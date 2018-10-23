@@ -7,8 +7,8 @@ Created on 2018年10月22日
 
 import tensorflow as tf
 
-def test():
-    import pdb; pdb.set_trace()
+
+def tensor_tt():
     a = tf.constant([1, 2], name="a", dtype=tf.float32)
     b = tf.constant([2.0, 3.0], name="b")
     c = a + b
@@ -16,4 +16,5 @@ def test():
 
 
 if __name__ == '__main__':
-    test()
+    import pdb; pdb.set_trace()
+    tensor_tt()

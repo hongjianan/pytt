@@ -108,8 +108,27 @@ def combobox_tt():
     root.mainloop()      # 当调用mainloop()时,窗口才会显示出来
 
 
+def event_tt():
+    root = Tk()
+
+    root.title("窗口测试")
+    
+    def eventhandler(event):
+        if event.keysym == 'Left':
+            print('按下了方向键左键')
+        elif event.keysym == 'Right':
+            print('按下了方向键右键！')
+        print(event)
+
+    btn = Button(root, text='button')
+    btn.bind_all('<KeyPress>', eventhandler)
+    btn.pack()
+    
+    root.mainloop()
+
 
 if __name__ == "__main__":
 #     text_tt()
 #     listbox_tt()
-    combobox_tt()
+#     combobox_tt()
+    event_tt()

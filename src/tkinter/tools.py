@@ -5,34 +5,75 @@ Created on 2018年10月19日
 @author: Administrator
 '''
 import json
+import traceback
 import Tkinter as tk
 import ttk
 
+ 
+class Transformer(object):
+    def transform_ex(self, data):
+        pass
+
+    def transform(self, data):
+        try:
+            return self.transform_ex(data)
+        except Exception:
+            msg = traceback.format_exc()
+            return msg
+
+
+class Json(Transformer):
+
+    def transform_ex(self, data):
+        data = data.replace("'", '"')
+        obj = json.loads(data)
+        return json.dumps(obj, sort_keys=True, indent=4,
+                          separators=(',', ': '))
+    
+
+class PerlPath(Transformer):
+    PERL_PATH = '::'
+    LINUX_FILE_PATH = '/'
+    WINDOWS_FILE_PATH = '\\'
+
+    def transform_ex(self, data):
+        if self.PERL_PATH in data:
+            out = data.replace(self.PERL_PATH, self.WINDOWS_FILE_PATH)
+        elif self.FILE_PATH in input:
+            out = data.replace(self.WINDOWS_FILE_PATH, self.PERL_PATH)
+        else:
+            out = data
+        return out
+    
 
 class Method(object):
+    # 功能
     ToJson = u'json格式化'
+    ToPerlPath = u'perl路径'
     Null = u'无'
 
     def __init__(self):
         self.method = {
             self.ToJson: self.to_json,
+            self.ToPerlPath: self.to_perl_path,
             self.Null: self.null
         }
     
     @classmethod
     def values(cls):
-        return (cls.ToJson, cls.Null)
+        return (cls.ToJson, cls.ToPerlPath, cls.Null)
     
     @staticmethod
-    def to_json(input):
-        print('to_json', input)
-        obj = json.loads(input)
-        return json.dumps(obj, sort_keys=True, indent=4,
-                          separators=(',', ': '))
+    def to_json(data):
+        return Json().transform(data)
+    
+    @staticmethod
+    def to_perl_path(data):
+        return PerlPath().transform(data)
 
     @staticmethod
-    def null(input):
-        return input
+    def null(data):
+        return data
     
     
 class Root(object):
@@ -46,7 +87,7 @@ class Root(object):
         self.tk = tk.Tk()
         self.tk.title(self.title)
         self.tk.geometry('%sx%s' % (self.weight, self.height))
-        
+    
     def run(self):
         self.tk.mainloop()
 
@@ -58,12 +99,12 @@ class Tools(object):
         self.root = root
         self.text = None
         
-    def draw(self):
+    def draw(self, column, row):
         # 创建一个下拉列表
         self.text = tk.StringVar()
         box = ttk.Combobox(self.root, width=12, textvariable=self.text)
         box['values'] = Method.values()     # 设置下拉列表的值
-        box.grid(column=0, row=0)      # 设置其在界面中出现的位置  column代表列   row 代表行
+        box.grid(row=row, column=column, sticky='w', padx='300')      # 设置其在界面中出现的位置  column代表列   row 代表行
         box.current(0)    # 设置下拉列表默认显示的值，0为 numberChosen['values'] 的下标值
         
     def get_method(self):
@@ -80,14 +121,13 @@ class Click(object):
     
     def cb(self):
         data = self.content.get_input()
-        print(self.tools.get_method())
         method = Method().method[self.tools.get_method()]
         output = method(data)
         self.content.set_output(output)
         
-    def draw(self):
+    def draw(self, row, column):
         button = tk.Button(self.root, text="执行", command=self.cb)
-        button.grid(row=0, column=1)
+        button.grid(row=row, column=column, sticky='e', padx='300')
 
 
 class Content(object):
@@ -100,9 +140,9 @@ class Content(object):
         self.output = None
     
     def draw(self):
-        self.input = tk.Text(self.root, font=('consolas', 19))
-        self.output = tk.Text(self.root, font=('consolas', 19))
-
+        self.input = tk.Text(self.root, font=('consolas', 12), width=98, height=17)
+        self.output = tk.Text(self.root, font=('consolas', 12), width=98, height=17)
+#         self.input.geometry('%sx%s' % (self.weight, self.height))
         self.input.grid(row=1, column=0)
         self.output.grid(row=2, column=0)
     
@@ -120,6 +160,19 @@ class Content(object):
         return self.input.delete(self.BEING, tk.END)
 
 
+class QuickKey(object):
+    def __init__(self, root, click):
+        self.root = root
+        self.click = click
+    
+    def event_handler(self, event):
+        if event.keysym == 'F3':
+            self.click.cb()
+
+    def register_key(self):
+        self.root.bind_all('<KeyPress>', self.event_handler)
+
+
 def main():
     root = Root('工具集')
     root.init()
@@ -127,11 +180,13 @@ def main():
     tools = Tools(root.tk)
     content = Content(root.tk)
     click = Click(root.tk, tools, content)
+    key = QuickKey(root.tk, click)
     
-    tools.draw()
+    key.register_key()
+    tools.draw(0, 0)
     content.draw()
-    click.draw()
-
+    click.draw(0, 0)
+    
     root.run()
 
 
