@@ -126,7 +126,7 @@ class Click(object):
         self.content.set_output(output)
         
     def draw(self, row, column):
-        button = tk.Button(self.root, text="执行", command=self.cb)
+        button = tk.Button(self.root, text="执行<F3>", command=self.cb)
         button.grid(row=row, column=column, sticky='e', padx='300')
 
 
